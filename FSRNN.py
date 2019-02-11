@@ -17,7 +17,7 @@ class FSRNNCell(object):
         if not training:
             self.keep_prob = 1.0
 
-        self.dropout = nn.Dropout(p = 1-self.keep_prob)
+        self.dropout = nn.Dropout(p = self.keep_prob)
 
     def __call__(self,inputs,state):
             F_state = state[0]
@@ -35,6 +35,7 @@ class FSRNNCell(object):
             F_output, F_state = self.fast_cells[1](S_output_drop, F_state)
 
             for i in range(2, self.fast_layers):
+                print("LALA")
                 F_output, F_state = self.fast_cells[i](F_output[:, 0:1] * 0.0, F_state)
 
 

@@ -39,7 +39,7 @@ def layer_norm_all(h, base, num_units):
 
 	alpha = Variable(torch.ones(4*num_units).type(dtype), requires_grad=True).cuda()
 
-	bias = Variable(torch.zeros(4*num_units).type(dtype), requires_grad=True).cuda()
+	bias = Variable(torch.ones(4*num_units).type(dtype), requires_grad=True).cuda()
 
 	return (h*alpha) + bias
 
@@ -69,7 +69,7 @@ def layer_norm(x, alpha_start=1.0, bias_start=0.0):
 
 	alpha = Variable(torch.ones(num_units).type(dtype), requires_grad=True).view([x.size()[0],-1]).cuda()
 
-	bias = Variable(torch.zeros(num_units).type(dtype), requires_grad=True).view([x.size()[0],-1]).cuda()
+	bias = Variable(torch.ones(num_units).type(dtype), requires_grad=True).view([x.size()[0],-1]).cuda()
 
 	mean, variance = moments_for_layer_norm(x)
 	mean = mean.cuda()
@@ -86,8 +86,10 @@ def zoneout(new_h, new_c, h, c, h_keep, c_keep, is_training):
 	mask_c = torch.ones_like(c)
 	mask_h = torch.ones_like(h)
 
-	c_dropout = nn.Dropout(p = 1-c_keep)
-	h_dropout = nn.Dropout(p= 1-h_keep)
+	# c_dropout = nn.Dropout(p = 1-c_keep)
+	c_dropout = nn.Dropout(p = c_keep)
+	h_dropout = nn.Dropout(p= h_keep)
+	# h_dropout = nn.Dropout(p= 1-h_keep)
 
 	if is_training:
 		mask_c = c_dropout(mask_c)
@@ -100,3 +102,4 @@ def zoneout(new_h, new_c, h, c, h_keep, c_keep, is_training):
 	c = new_c * mask_c + (-mask_c + 1.) * c
 
 	return h, c
+

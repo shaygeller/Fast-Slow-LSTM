@@ -31,7 +31,6 @@ class LN_LSTMCell(object):
         c = c.cuda()
         h_size = self.num_units
         x_size = int(x.size()[1])
-        
 
         W_xh = helper.orthogonal_initializer([x_size, 4 * h_size] , scale = 1.0)
 
