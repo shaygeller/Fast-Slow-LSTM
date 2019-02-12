@@ -19,10 +19,7 @@ import numpy as np
 
 from NEW_LSTM import LayerNormLSTM, LSTM
 
-vocab_size = 50
-weight = torch.ones(vocab_size)
-# weight[0] = 0.0
-criterion = nn.CrossEntropyLoss(weight=weight, reduction="none").cuda()
+criterion = None # Will be filled later
 # criterion = nn.CrossEntropyLoss(ignore_index=0)
 #optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 args = config.get_config()
@@ -339,7 +336,8 @@ if __name__ == "__main__":
     model = PTB_Model(embedding_dim=args.embed_size, num_steps=args.num_steps, batch_size=args.batch_size,
                       vocab_size=vocab_size, num_layers=args.num_layers, dp_keep_prob=args.keep_prob)
     model = model.cuda()
-
+    weight = torch.ones(vocab_size)
+    criterion = nn.CrossEntropyLoss(weight=weight, reduction="none").cuda()
     # # Init weights
     with torch.no_grad():
         for p in model.parameters():
