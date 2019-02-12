@@ -115,8 +115,8 @@ class LSTM(nn.Module):
         self.hidden_size = hidden_size
         self.bias = bias
         self.dropout = dropout
-        self.i2h = nn.Linear(input_size, 4 * hidden_size, bias=bias)
-        self.h2h = nn.Linear(hidden_size, 4 * hidden_size, bias=bias)
+        self.i2h = nn.Linear(input_size, 4 * hidden_size, bias=False)
+        self.h2h = nn.Linear(hidden_size, 4 * hidden_size, bias=self.bias)
         self.reset_parameters()
         assert (dropout_method.lower() in ['pytorch', 'gal', 'moon', 'semeniuta'])
         self.dropout_method = dropout_method

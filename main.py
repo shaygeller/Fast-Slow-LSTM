@@ -21,7 +21,7 @@ from NEW_LSTM import LayerNormLSTM, LSTM
 
 vocab_size = 50
 weight = torch.ones(vocab_size)
-weight[0] = 0.0
+# weight[0] = 0.0
 criterion = nn.CrossEntropyLoss(weight=weight, reduction="none").cuda()
 # criterion = nn.CrossEntropyLoss(ignore_index=0)
 #optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
@@ -56,12 +56,12 @@ class PTB_Model(nn.Module):
         #                                   zoneout_keep_h=args.zoneout_h, zoneout_keep_c=args.zoneout_c)
 
         # self.F_cell1 = nn.LSTM(self.emb_size, self.F_size, self.n_layers,
-        #                     dropout=0, batch_first=True)
-        # self.F_cell2 = nn.LSTM(self.S_size, self.F_size, self.n_layers,
-        #                     dropout=0, batch_first=True)
+        #                     dropout=0, batch_first=True,bias=False)
         # self.S_cell = nn.LSTM(self.F_size, self.S_size, self.n_layers,
-        #                     dropout=0, batch_first=True)
-
+        #                     dropout=0, batch_first=True, bias=False)
+        # self.F_cell2 = nn.LSTM(self.S_size, self.F_size, self.n_layers,
+        #                     dropout=0, batch_first=True, bias=False)
+        #
         self.F_cell1 = LSTM(self.emb_size, self.F_size, bias=True, dropout=0.0,
                       dropout_method='pytorch')
 
@@ -111,6 +111,7 @@ class PTB_Model(nn.Module):
 
 
         F_output, F_state_new = self.F_cell1(inputs, F_state)
+        # F_output, F_state_new = self.F_cell1(inputs.view(inputs.shape[0],1,-1), F_state)
         # F_output = self.F1_norm(F_output)
         # F_state_new_0 = self.F10_norm(F_state_new[0])
         # F_state_new_1 = self.F11_norm(F_state_new[1])
@@ -233,7 +234,13 @@ class PTB_Model(nn.Module):
 
 
 
-
+def repackage_hidden(h):
+    """Wraps hidden states in new Tensors,
+    to detach them from their history."""
+    if isinstance(h, torch.Tensor):
+        return h.detach()
+    else:
+        return tuple(repackage_hidden(v) for v in h)
 
 def run_epoch(model, data, is_train=False, lr=1.0):
     """Runs the model on the given data."""
@@ -249,9 +256,12 @@ def run_epoch(model, data, is_train=False, lr=1.0):
     iters = 0.0
 
     h = model.init_hidden(model.batch_size)
-
-    optimizer = optim.Adam(model.parameters(), lr=lr)
-    # optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.9)
+    print("Before")
+    for p in model.parameters():
+        print(p.data.shape)
+        print(p.data)
+    # optimizer = optim.Adam(model.parameters(), lr=lr)
+    optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.0)
     for step, (x, y) in enumerate(reader.ptb_iterator(data, model.batch_size, model.num_steps)):
 
         inputs = Variable(torch.from_numpy(x.astype(np.int64)).transpose(0, 1).contiguous()).cuda()
@@ -263,7 +273,8 @@ def run_epoch(model, data, is_train=False, lr=1.0):
         # we'd backprop through the entire training history
         h_new=[]
         for tup in h:
-            h_temp = tuple([each.data for each in tup])
+            # h_temp = tuple([each.data for each in tup])
+            h_temp = repackage_hidden(tup)
             h_new.append(h_temp)
 
         model.zero_grad()
@@ -279,25 +290,28 @@ def run_epoch(model, data, is_train=False, lr=1.0):
         outputs = model.fc(outputs)
 
         # outputs, h = model(inputs, h_new)
-        # TODO: Check initial weights in Tensorflow and Pytorch implementations
+        # TODO: Check initial weights in Tensorflow and Pytorch implementations - Need to init Bias to zeroes
         # TODO: Classify only steps first, then chech if can extend to full batch matrix for better speed
         targets = Variable(torch.from_numpy(y.astype(np.int64)).transpose(0, 1).contiguous()).cuda()
         tt = torch.squeeze(targets.view(-1, model.batch_size * model.num_steps))
 
-        loss = criterion(outputs, tt).view(model.batch_size,model.num_steps).sum()/model.batch_size
+        loss = criterion(outputs, tt).mean()
+        loss.backward()
         # loss = criterion(outputs.view(-1, model.vocab_size), tt)
-        print("Loss ", loss.item())
-        # costs += loss.data[0] * model.num_steps
-        # costs += loss.item() * model.num_steps
-        costs += loss.item()
-        iters += model.num_steps
+        with torch.no_grad():
+
+            print("Loss ", loss.item()* model.num_steps)
+            # costs += loss.data[0] * model.num_steps
+            costs += loss.item() * model.num_steps
+            # costs += loss.item()
+            iters += model.num_steps
 
         if is_train:
             # print("Before")
             # for p in model.parameters():
             #     print(p.grad)
 
-            loss.backward()
+            # loss.backward()
 
             torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
 
@@ -305,10 +319,13 @@ def run_epoch(model, data, is_train=False, lr=1.0):
             # for p in model.parameters():
             #     print(p.shape)
             #     print(p.grad)
+
+            # for p in model.parameters():
+            #     p.data.add_(-lr, p.grad.data)
             optimizer.step()
 
             if step % (epoch_size // 10) == 10:
-                print("Loss ", loss.item())
+                print("Loss ", loss.item()* model.num_steps)
                 print("{} perplexity: {:8.2f} speed: {} wps".format(step * 1.0 / epoch_size, costs / (iters* 0.69314718056),
                                       iters * model.batch_size / (time.time() - start_time)))
     return costs / (iters* 0.69314718056)
@@ -324,11 +341,17 @@ if __name__ == "__main__":
     model = model.cuda()
 
     # # Init weights
-    for p in model.parameters():
-        if p.ndimension() > 1:
-            print(p.data)
-            torch.nn.init.orthogonal_(p.data)
-            print(p.data)
+    with torch.no_grad():
+        for p in model.parameters():
+            if p.ndimension() > 1:
+                print(p.data.shape)
+                print(p.data)
+                torch.nn.init.orthogonal_(p.data)
+                print(p.data)
+            elif p.ndimension() == 1:
+                print(p.data.shape)
+                torch.nn.init.constant_(p.data,0.0)
+
     # # Init weights
     # with torch.no_grad():
     #     for p in model.parameters():

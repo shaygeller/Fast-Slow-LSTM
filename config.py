@@ -63,7 +63,7 @@ train_arg.add_argument('--init_scale', type=float, default=0.01, help='')
 train_arg.add_argument('--lr_start', type=float, default=0.002, help='')
 train_arg.add_argument('--lr_decay_step', type=int, default=5000, help='')
 train_arg.add_argument('--lr_decay_rate', type=float, default= 0.1, help='')
-train_arg.add_argument('--max_grad_norm', type=float, default=1.0, help='')
+train_arg.add_argument('--max_grad_norm', type=float, default=0.25, help='')
 train_arg.add_argument('--checkpoint_secs', type=int, default=300, help='')
 
 # Misc
