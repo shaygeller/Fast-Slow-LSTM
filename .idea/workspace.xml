@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c16af7-290a-4780-86e7-4a02600ca305" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/new_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEW_LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEW_LSTM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/reader.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,15 +15,28 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Pytorch_fast_slow_lstm$main.coverage" NAME="main Coverage Results" MODIFIED="1549973150987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pytorch_fast_slow_lstm$new_main.coverage" NAME="new_main Coverage Results" MODIFIED="1550444934987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pytorch_fast_slow_lstm$main.coverage" NAME="main Coverage Results" MODIFIED="1550416075637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
-              <caret line="301" lean-forward="true" selection-start-line="301" selection-end-line="301" />
+            <state relative-caret-position="2454">
+              <caret line="264" column="31" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/new_main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1445">
+              <caret line="103" column="23" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="23" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -31,38 +45,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/ptb/train">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/torch/nn/modules/loss.py">
+        <entry file="file://$PROJECT_DIR$/reader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15215">
-              <caret line="903" selection-start-line="903" selection-end-line="903" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NEW_LSTM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2635">
-              <caret line="164" column="25" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="25" />
+            <state relative-caret-position="203">
+              <caret line="115" column="14" selection-start-line="115" selection-start-column="14" selection-end-line="115" selection-end-column="14" />
               <folding>
-                <element signature="e#23#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Shay_LSTM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="22" column="27" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1411">
-              <caret line="85" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="918">
+              <caret line="56" column="35" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -80,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FSRNN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+            <state relative-caret-position="799">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -92,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="63" column="4" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
+            <state relative-caret-position="1700">
+              <caret line="105" selection-start-line="105" selection-end-line="105" />
             </state>
           </provider>
         </entry>
@@ -101,8 +89,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LNLSTM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+            <state>
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -121,36 +108,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lr</find>
-      <find>before</find>
-      <find>LayerNormLSTM</find>
-      <find>num_u</find>
-      <find>51</find>
-      <find>per</find>
-      <find>id_to_word</find>
-      <find>vocab</find>
-      <find>num_layers</find>
-      <find>keep_prob</find>
-      <find>perpl</find>
-      <find>reader</find>
-      <find>34,  0, 13,  3, 10</find>
-      <find>8,  1,  7,  1,  8</find>
-      <find>0,  3,  1,  8,  0</find>
-      <find>optimi</find>
-      <find>fc</find>
-      <find>gra</find>
-      <find>false</find>
-      <find>embed_size</find>
-      <find>n_</find>
       <find>VOCAB</find>
       <find>keep</find>
-      <find>print(</find>
       <find>todo</find>
       <find>bias</find>
       <find>laa</find>
-      <find>step</find>
       <find>max_grad_norm</find>
       <find>perple</find>
+      <find>criterio</find>
+      <find>orthogonal_</find>
+      <find>optimi</find>
+      <find>print(</find>
+      <find>step</find>
+      <find>7,  1,  0,  6,  4</find>
+      <find>load</find>
+      <find>561628</find>
+      <find>19.5</find>
+      <find>inputs</find>
+      <find>50, 128</find>
+      <find>mama</find>
+      <find>mamam</find>
+      <find>19.56</find>
+      <find>np.load</find>
+      <find>19.</find>
+      <find>print</find>
+      <find>train_data</find>
+      <find>epoch</find>
+      <find>optimizers</find>
+      <find>memory</find>
+      <find>linea</find>
+      <find>loss</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -164,18 +151,19 @@
         <option value="$PROJECT_DIR$/helper.py" />
         <option value="$PROJECT_DIR$/normalize.py" />
         <option value="$PROJECT_DIR$/Shay_LSTM.py" />
-        <option value="$PROJECT_DIR$/reader.py" />
-        <option value="$PROJECT_DIR$/NEW_LSTM.py" />
         <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/NEW_LSTM.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/reader.py" />
+        <option value="$PROJECT_DIR$/new_main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="15" />
+    <option name="y" value="120" />
+    <option name="width" value="1555" />
+    <option name="height" value="840" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -221,7 +209,7 @@
   <component name="PropertiesComponent">
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/new_main.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -237,7 +225,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.new_main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Pytorch fast-slow-lstm" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -260,6 +248,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="new_main" type="PythonConfigurationType" factoryName="Python">
+      <module name="Pytorch fast-slow-lstm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\User\Anaconda3\envs\ml1\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/new_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.new_main" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -282,7 +293,12 @@
       <workItem from="1549637653002" duration="16698000" />
       <workItem from="1549809898852" duration="16176000" />
       <workItem from="1549903819717" duration="12044000" />
-      <workItem from="1549966768032" duration="5100000" />
+      <workItem from="1549966768032" duration="20968000" />
+      <workItem from="1550411459897" duration="5293000" />
+      <workItem from="1550434238699" duration="626000" />
+      <workItem from="1550436062327" duration="5362000" />
+      <workItem from="1550441464373" duration="251000" />
+      <workItem from="1550441766206" duration="5476000" />
     </task>
     <task id="LOCAL-00001" summary="Upload Pytorch running model, still not perfect">
       <created>1549906303456</created>
@@ -291,23 +307,36 @@
       <option name="project" value="LOCAL" />
       <updated>1549906303456</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Upload Pytorch running model, still not perfect">
+      <created>1549973051769</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1549973051769</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Upload Pytorch running model, still not perfect">
+      <created>1549973172940</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1549973172940</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128590000" />
+    <option name="totallyTimeSpent" value="161466000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1590604" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16979866" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35977337" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.36827195" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42776203" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37393767" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -317,7 +346,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32936078" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.4301192" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="13" visible="true" weight="0.42917848" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -337,12 +366,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>305</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>302</line>
+          <line>264</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -357,7 +381,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>297</line>
+          <line>260</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
@@ -370,6 +394,48 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>targets.data</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>targets</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>a = []
+a.append(new_inputs)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>a = new_inputs.tolist()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>a = list(new_inputs)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>lala = []
+for param,weight in zip(model.parameters(),data):
+    param.data = torch.from_numpy(weight)
+    lala.append(param.data)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>lala = []
+for param,weight in zip(model.parameters(),data):
+    param.data = weight
+    lala.append(param.data)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>criterion(outputs, tt)</expression-string>
         <language-id>Python</language-id>
@@ -385,38 +451,13 @@
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>loss = criterion(outputs, tt).view(model.batch_size,model.num_steps).sum()/model.batch_size</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>loss = criterion(outputs, tt).sum()/model.batch_size</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>loss = criterion(outputs, tt).sum()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>loss = criterion(outputs, tt)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>epoch_size</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>epoch_size[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>inputs.data</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>criterion(outputs, tt).sum()/model.batch_size</expression-string>
         <language-id>Python</language-id>
@@ -473,13 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/torch/tensor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -504,23 +538,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/torch/nn/functional.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22695">
-          <caret line="1351" selection-start-line="1351" selection-end-line="1351" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data2/ptb/test">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -534,18 +551,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="301" lean-forward="true" selection-start-line="301" selection-end-line="301" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/ptb/train">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/torch/nn/functional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="1453" selection-start-line="1453" selection-end-line="1453" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/torch/nn/modules/loss.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -554,10 +568,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/torch/tensor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="449" selection-start-line="449" selection-end-line="449" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/numpy/lib/npyio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7157">
+          <caret line="445" selection-start-line="445" selection-end-line="445" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NEW_LSTM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2635">
-          <caret line="164" column="25" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="25" />
+        <state relative-caret-position="2278">
+          <caret line="143" column="68" selection-start-line="143" selection-start-column="68" selection-end-line="143" selection-end-column="68" />
           <folding>
             <element signature="e#23#34#0" expanded="true" />
           </folding>
@@ -574,17 +602,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/keras/optimizers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        <state relative-caret-position="918">
+          <caret line="56" column="35" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FSRNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        <state relative-caret-position="799">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
@@ -593,15 +628,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="63" column="4" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
+        <state relative-caret-position="1700">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LNLSTM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+        <state>
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="115" column="14" selection-start-line="115" selection-start-column="14" selection-end-line="115" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2454">
+          <caret line="264" column="31" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/new_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="103" column="23" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="23" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

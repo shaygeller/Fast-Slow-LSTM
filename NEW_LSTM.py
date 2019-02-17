@@ -141,6 +141,7 @@ class LSTM(nn.Module):
         preact = self.i2h(x) + self.h2h(h)
 
         # activations
+        # TODO: Split the gates to be like tensorflow implementation
         gates = preact[:, :3 * self.hidden_size].sigmoid()
         g_t = preact[:, 3 * self.hidden_size:].tanh()
         i_t = gates[:, :self.hidden_size]
@@ -170,7 +171,6 @@ class LSTM(nn.Module):
         h_t = h_t.view(1, h_t.size(0), -1)
         c_t = c_t.view(1, c_t.size(0), -1)
         return h_t, (h_t, c_t)
-        # return new_h, (new_h, new_c)
 
 
 class GalLSTM(LSTM):

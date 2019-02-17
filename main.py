@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+import os
+
 import torch
 import torch.nn as nn
 import torch.nn.init
@@ -32,7 +34,7 @@ class PTB_Model(nn.Module):
         self.batch_size = batch_size
         self.num_steps = num_steps
         self.vocab_size = vocab_size
-
+        self.zoneout = False
         self.n_layers = 1
         self.n_hidden = args.cell_size
 
@@ -52,21 +54,21 @@ class PTB_Model(nn.Module):
         # self.S_cell  = LNLSTM.LN_LSTMCell(self.S_size, use_zoneout=True, is_training=self.is_train,
         #                                   zoneout_keep_h=args.zoneout_h, zoneout_keep_c=args.zoneout_c)
 
-        # self.F_cell1 = nn.LSTM(self.emb_size, self.F_size, self.n_layers,
-        #                     dropout=0, batch_first=True,bias=False)
-        # self.S_cell = nn.LSTM(self.F_size, self.S_size, self.n_layers,
-        #                     dropout=0, batch_first=True, bias=False)
-        # self.F_cell2 = nn.LSTM(self.S_size, self.F_size, self.n_layers,
-        #                     dropout=0, batch_first=True, bias=False)
+        self.F_cell1 = nn.LSTM(self.emb_size, self.F_size, self.n_layers,
+                            dropout=0, batch_first=True,bias=False)
+        self.S_cell = nn.LSTM(self.F_size, self.S_size, self.n_layers,
+                            dropout=0, batch_first=True, bias=False)
+        self.F_cell2 = nn.LSTM(self.S_size, self.F_size, self.n_layers,
+                            dropout=0, batch_first=True, bias=False)
+
+        # self.F_cell1 = LSTM(self.emb_size, self.F_size, bias=True, dropout=0.0,
+        #               dropout_method='pytorch')
         #
-        self.F_cell1 = LSTM(self.emb_size, self.F_size, bias=True, dropout=0.0,
-                      dropout_method='pytorch')
-
-        self.S_cell = LSTM(self.F_size, self.S_size, bias=True, dropout=0.0,
-                      dropout_method='pytorch')
-
-        self.F_cell2 = LSTM(self.S_size, self.F_size, bias=True, dropout=0.0,
-                      dropout_method='pytorch')
+        # self.S_cell = LSTM(self.F_size, self.S_size, bias=True, dropout=0.0,
+        #               dropout_method='pytorch')
+        #
+        # self.F_cell2 = LSTM(self.S_size, self.F_size, bias=True, dropout=0.0,
+        #               dropout_method='pytorch')
 
 
         self.dropout0 = nn.Dropout(self.dp_keep_prob)
@@ -75,72 +77,39 @@ class PTB_Model(nn.Module):
         self.dropout3 = nn.Dropout(self.dp_keep_prob)
 
         self.fc = nn.Linear(self.F_size, vocab_size,bias=True)
-        # for p in self.fc.parameters():
-        #     if p.ndimension()>1:
-        #         print(p.data)
-        #         torch.nn.init.orthogonal_(p.data)
-        #         print(p.data)
-        # self.F10_norm = nn.LayerNorm(self.F_size, eps=1e-03)
-        # self.F11_norm = nn.LayerNorm(self.F_size, eps=1e-03)
-        # self.F20_norm = nn.LayerNorm(self.F_size, eps=1e-03)
-        # self.F21_norm = nn.LayerNorm(self.F_size, eps=1e-03)
-        # self.S10_norm = nn.LayerNorm(self.S_size, eps=1e-03)
-        # self.S11_norm = nn.LayerNorm(self.S_size, eps=1e-03)
-
-
-        # self.FS_cell = FSRNN.FSRNNCell(self.F_cells, self.S_cell, args.keep_prob, self.is_train)
-        # self._initial_state = self.FS_cell.zero_state(batch_size, torch.FloatTensor)
 
     def forward(self,inputs, hidden):
 
         ''' Forward pass through the network.
             These inputs are x, and the hidden/cell state `hidden`. '''
-        zoneout = False
 
         F_state = hidden[0]
         S_state = hidden[1]
 
         inputs = self.embedding(inputs)
-        inputs = self.dropout0(inputs)
+        # inputs = self.dropout0(inputs)
 
-        # Create input for LSTM with num_step=1
-        # inputs = inputs.view(self.batch_size,1,self.emb_size)
+        F_output, F_state_new = self.F_cell1(inputs.view(inputs.shape[0], 1, inputs.shape[1]), F_state)
 
-
-        F_output, F_state_new = self.F_cell1(inputs, F_state)
-        # F_output, F_state_new = self.F_cell1(inputs.view(inputs.shape[0],1,-1), F_state)
-        # F_output = self.F1_norm(F_output)
-        # F_state_new_0 = self.F10_norm(F_state_new[0])
-        # F_state_new_1 = self.F11_norm(F_state_new[1])
-        # F_state_new = (F_state_new_0, F_state_new_1)
-        # F_output = F_state_new_0.view(model.batch_size,-1,model.F_size)
-        if zoneout:
+        if self.zoneout:
             new_h, new_c = helper.zoneout(F_state_new[0], F_state_new[1], F_state[0], F_state[1], 0.9,0.5, True)
             F_state_new = (new_h, new_c)
-        F_output_drop = self.dropout1(F_output)
+        # F_output_drop = self.dropout1(F_output)
 
 
-        S_output, S_state_new = self.S_cell(F_output_drop, S_state)
-        # S_state_new_0 = self.S10_norm(S_state_new[0])
-        # S_state_new_1 = self.S11_norm(S_state_new[1])
-        # S_state_new = (S_state_new_0, S_state_new_1)
-        # S_output = S_state_new_0.view(model.batch_size,-1,model.S_size)
+        S_output, S_state_new = self.S_cell(F_output, S_state)
 
-        if zoneout:
+        if self.zoneout:
             new_h, new_c = helper.zoneout(S_state_new[0], S_state_new[1], S_state[0], S_state[1], 0.9, 0.5, True)
             S_state_new = (new_h, new_c)
-        S_output_drop = self.dropout2(S_output)
+        # S_output_drop = self.dropout2(S_output)
 
-        F_output, F_state_new2 = self.F_cell2(S_output_drop, F_state_new)
-        # F_state_new2_0 = self.F20_norm(F_state_new2[0])
-        # F_state_new2_1 = self.F21_norm(F_state_new2[1])
-        # F_state_new2 = (F_state_new2_0, F_state_new2_1)
-        # F_output = F_state_new2_0.view(model.batch_size,-1,model.F_size)
+        F_output, F_state_new2 = self.F_cell2(S_output, F_state_new)
 
-        if zoneout:
+        if self.zoneout:
             new_h, new_c = helper.zoneout(F_state_new[0], F_state_new[1], F_state[0], F_state[1], 0.9, 0.5, True)
             F_state_new2 = (new_h, new_c)
-        F_output_drop = self.dropout3(F_output)
+        # F_output_drop = self.dropout3(F_output)
 
 
         # for i in range(2, 5):
@@ -148,71 +117,24 @@ class PTB_Model(nn.Module):
 
         # # Stack up LSTM outputs using view
         # # you may need to use contiguous to reshape the output
-        out_flatten = F_output_drop.contiguous().view(-1, self.n_hidden)
+        out_flatten = F_output.contiguous().view(-1, self.n_hidden)
 
-        # out = self.fc(out_flatten)
+        hidden = (F_state_new2, S_state_new)
 
-        hidden = (F_state_new2,S_state_new)
-
-        return out_flatten,hidden
-        # return out,hidden
+        return out_flatten, hidden
 
 
 
-
-
-
-
-
-
-        # # state = self._initial_state
-        # # F_state =(torch.randn(1, 1, 3),
-        # #   torch.randn(1, 1, 3))
-        # # S_state
-        # outputs = []
-        # inputs = self.embedding(inputs)
-        # for time_step in range(self.num_steps):
-        #     step_input = inputs[:,time_step,:]
-        #     # out , state = self.FS_cell(inputs[:,time_step,:],state)
-        #
-        #     step_input = self.dropout(step_input)
-        #
-        #     F_output, F_state = self.F_cell1(step_input, F_state)
-        #
-        #     F_output_drop = self.dropout(F_output)
-        #
-        #     S_output, S_state = self.S_cell(F_output_drop, S_state)
-        #     S_output_drop = self.dropout(S_output)
-        #
-        #     F_output, F_state = self.F_cell2(S_output_drop, F_state)
-        #
-        #     # for i in range(2, self.fast_layers):
-        #     #     print("LALA")
-        #     #     F_output, F_state = self.fast_cells[i](F_output[:, 0:1] * 0.0, F_state)
-        #
-        #     F_output_drop = self.dropout(F_output)
-        #
-        #     outputs.append(F_output_drop)
-
-        # output = torch.cat(outputs,dim =1).view([-1,self.F_size]).cuda()
-        #
-        # softmax_w = helper.orthogonal_initializer([self.F_size, self.vocab_size]).cuda()
-        # softmax_b = helper.orthogonal_initializer([self.vocab_size]).cuda()
-        #
-        # logits = torch.mm(output , softmax_w) + softmax_b
-        #
-        # return logits.view([self.num_steps,self.batch_size,self.vocab_size])
 
     def init_hidden(self, batch_size):
         # ''' Initializes hidden state '''
         # # Create two new tensors with sizes n_layers x batch_size x n_hidden,
         # # initialized to zero, for hidden state and cell state of LSTM
-        hidden_stats = []
-        number_of_latms = 2
+
         weight = next(self.parameters()).data
 
         train_on_gpu = True
-        if (train_on_gpu):
+        if train_on_gpu:
             F_hidden = (weight.new(self.n_layers, batch_size, self.F_size).zero_().cuda(),
                       weight.new(self.n_layers, batch_size, self.F_size).zero_().cuda())
         else:
@@ -220,14 +142,14 @@ class PTB_Model(nn.Module):
                       weight.new(self.n_layers, batch_size, self.F_size).zero_())
 
 
-        if (train_on_gpu):
+        if train_on_gpu:
             S_hidden = (weight.new(self.n_layers, batch_size, self.S_size).zero_().cuda(),
                       weight.new(self.n_layers, batch_size, self.S_size).zero_().cuda())
         else:
             S_hidden = (weight.new(self.n_layers, batch_size, self.S_size).zero_(),
                       weight.new(self.n_layers, batch_size, self.S_size).zero_())
 
-        return (F_hidden,S_hidden)
+        return (F_hidden, S_hidden)
 
 
 
@@ -246,26 +168,70 @@ def run_epoch(model, data, is_train=False, lr=1.0):
         model.train()
     else:
         model.eval()
-    
+
+
+    # with torch.no_grad():
+    #     print("Before")
+    #     for p in model.parameters():
+    #         print(p.data.shape)
+    #     container = np.load('mat.npz')
+    #     np_weights = [container[key] for key in container]
+    #     flag = True
+    #     for param, np_weight in zip(model.parameters(), np_weights):
+    #         if flag:
+    #             print("MAMAMAMAMA")
+    #             print(np_weight.shape)
+    #             print(np_weight)
+    #
+    #             param.data = torch.from_numpy(np_weight).cuda()
+    #             flag = False
+    #
+    #         elif param.data.shape[0]==50 and param.data.shape[1]==700:
+    #             param.data = torch.from_numpy(np_weight).view(param.data.shape[0],-1).cuda()
+    #             flag=True
+    #         else:
+    #             param.data = torch.from_numpy(np_weight).cuda()
+    #
+    #
+
+
+
+
+
+
+
+
     epoch_size = ((len(data) // model.batch_size) - 1) // model.num_steps
     start_time = time.time()
     costs = 0.0
     iters = 0.0
 
     h = model.init_hidden(model.batch_size)
-    print("Before")
-    for p in model.parameters():
-        print(p.data.shape)
-        print(p.data)
-    # optimizer = optim.Adam(model.parameters(), lr=lr)
-    optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.0)
-    for step, (x, y) in enumerate(reader.ptb_iterator(data, model.batch_size, model.num_steps)):
+    # print("Before")
+    # for p in model.parameters():
+    #     print(p.data.shape)
+        # print(p.data)
+    optimizer = optim.Adam(model.parameters(), lr=lr)
+    # optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.0)
+    # optimizer = optim.RMSprop(model.parameters(), lr=lr, momentum=0.0)
 
+    # inputs_container = np.load('inputs.npz')
+    # outputs_container = np.load(os.path.join("..","tensorflow-Fast-Slow-LSTM-master","outputs.npz"))
+    # new_inputs = [inputs_container[key] for key in inputs_container]
+    # new_inputs = new_inputs[0]
+    # new_inputs_list = []
+    # new_inputs_list.append(new_inputs)
+    # new_outputs = [outputs_container[key] for key in outputs_container]
+    # new_outputs = new_outputs[0]
+    # new_outputs_list = []
+    # new_outputs_list.append(new_outputs)
+
+
+    for step, (x, y) in enumerate(reader.ptb_iterator(data, model.batch_size, model.num_steps)):
+    # for step, (x, y) in enumerate(zip(new_inputs_list,new_outputs_list)):
         inputs = Variable(torch.from_numpy(x.astype(np.int64)).transpose(0, 1).contiguous()).cuda()
         inputs = torch.transpose(inputs, 0, 1)
-
-        # h = model.init_hidden(model.batch_size)
-
+        # print(inputs)
         # Creating new variables for the hidden state, otherwise
         # we'd backprop through the entire training history
         h_new=[]
@@ -276,8 +242,8 @@ def run_epoch(model, data, is_train=False, lr=1.0):
 
         model.zero_grad()
         outputs = []
-        # print(inputs.data)
 
+        # Running the model over each step and keeping the outputs
         for time_step in range(model.num_steps):
             step_input = inputs[:,time_step]
             output, h = model(step_input, h_new)
@@ -286,41 +252,47 @@ def run_epoch(model, data, is_train=False, lr=1.0):
         outputs = torch.cat(outputs,dim =1).view([-1,model.F_size]).cuda()
         outputs = model.fc(outputs)
 
-        # outputs, h = model(inputs, h_new)
-        # TODO: Check initial weights in Tensorflow and Pytorch implementations - Need to init Bias to zeroes
-        # TODO: Classify only steps first, then chech if can extend to full batch matrix for better speed
         targets = Variable(torch.from_numpy(y.astype(np.int64)).transpose(0, 1).contiguous()).cuda()
         tt = torch.squeeze(targets.view(-1, model.batch_size * model.num_steps))
 
-        loss = criterion(outputs, tt).mean()
-        loss.backward()
-        # loss = criterion(outputs.view(-1, model.vocab_size), tt)
-        with torch.no_grad():
+        np.savez('inputs_.npz', x)
+        np.savez('outputs_.npz', y)
 
+        loss = criterion(outputs, tt).mean()
+
+        # Print loss and aggregate costs for perplexity computation
+        with torch.no_grad():
             print("Loss ", loss.item()* model.num_steps)
-            # costs += loss.data[0] * model.num_steps
+            print(x)
+            # print("After")
+            # for p in model.parameters():
+            #     print(p.shape)
+            #     print(p.data)
             costs += loss.item() * model.num_steps
-            # costs += loss.item()
             iters += model.num_steps
 
         if is_train:
+
+            ## DEBUGGING parameters
             # print("Before")
             # for p in model.parameters():
+            #     print(p.shape)
             #     print(p.grad)
-
-            # loss.backward()
-
+            loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
 
+            ## DEBUGGING parameters
             # print("After")
             # for p in model.parameters():
             #     print(p.shape)
             #     print(p.grad)
 
-            # for p in model.parameters():
-            #     p.data.add_(-lr, p.grad.data)
-            optimizer.step()
+            # optimizer.step()
 
+            # TODO: remove dropout in both implementation
+            # TODO: share init weights in both implementations
+
+            # Print current train perplexity
             if step % (epoch_size // 10) == 10:
                 print("Loss ", loss.item()* model.num_steps)
                 print("{} perplexity: {:8.2f} speed: {} wps".format(step * 1.0 / epoch_size, costs / (iters* 0.69314718056),
@@ -336,25 +308,51 @@ if __name__ == "__main__":
     model = PTB_Model(embedding_dim=args.embed_size, num_steps=args.num_steps, batch_size=args.batch_size,
                       vocab_size=vocab_size, num_layers=args.num_layers, dp_keep_prob=args.keep_prob)
     model = model.cuda()
+
+    # Creating criterion for loss computation
     weight = torch.ones(vocab_size)
     criterion = nn.CrossEntropyLoss(weight=weight, reduction="none").cuda()
-    # # Init weights
-    with torch.no_grad():
-        for p in model.parameters():
-            if p.ndimension() > 1:
-                print(p.data.shape)
-                print(p.data)
-                torch.nn.init.orthogonal_(p.data)
-                print(p.data)
-            elif p.ndimension() == 1:
-                print(p.data.shape)
-                torch.nn.init.constant_(p.data,0.0)
 
-    # # Init weights
+    # # # Init weights
     # with torch.no_grad():
     #     for p in model.parameters():
-    #         p.uniform_(-0.01, 0.01)
+    #         if p.ndimension() > 1:
+    #             print(p.data.shape)
+    #             print(p.data)
+    #             torch.nn.init.orthogonal_(p.data)
+    #             print(p.data)
+    #         elif p.ndimension() == 1:
+    #             print(p.data.shape)
+    #             torch.nn.init.constant_(p.data,0.0)
+    #
 
+    with torch.no_grad():
+        print("Print Parameters shape")
+        for p in model.parameters():
+            print(p.data.shape)
+        # container = np.load('mat.npz')
+
+        print("Loading Numpy saved weights")
+        container = np.load(os.path.join("..", "tensorflow-Fast-Slow-LSTM-master", "mat.npz"))
+
+        np_weights = [container[key] for key in container]
+        flag = True
+        for param, np_weight in zip(model.parameters(), np_weights):
+            if flag:
+                param.data = torch.from_numpy(np_weight).cuda()
+                print(param.shape)
+                print(param.data)
+                flag = False
+
+            elif param.data.shape[0]==50 and param.data.shape[1]==700:
+                param.data = torch.from_numpy(np_weight).view(param.data.shape[0],-1).cuda()
+                print(param.shape)
+                print(param.data)
+                flag=True
+            else:
+                param.data = torch.from_numpy(np_weight).cuda()
+                print(param.shape)
+                print(param.data)
 
     lr = args.lr_start
     # decay factor for learning rate

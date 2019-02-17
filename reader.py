@@ -106,7 +106,15 @@ def ptb_iterator(raw_data, batch_size, num_steps):
   if epoch_size == 0:
     raise ValueError("epoch_size == 0, decrease batch_size or num_steps")
 
-  for i in range(epoch_size):
+  # for i in range(epoch_size):
+
+  # Changes to support infinite iterations on the dataset
+  i=0
+  while True:
     x = data[:, i*num_steps:(i+1)*num_steps]
     y = data[:, i*num_steps+1:(i+1)*num_steps+1]
-    yield (x, y)
+    yield (x, y.reshape(batch_size,num_steps,1))
+
+    i += 1
+    if i == epoch_size:
+      i = 0
