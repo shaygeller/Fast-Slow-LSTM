@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c16af7-290a-4780-86e7-4a02600ca305" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/new_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEW_LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEW_LSTM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/reader.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,16 +14,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Pytorch_fast_slow_lstm$new_main.coverage" NAME="new_main Coverage Results" MODIFIED="1550444934987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pytorch_fast_slow_lstm$new_main.coverage" NAME="new_main Coverage Results" MODIFIED="1550492957464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Pytorch_fast_slow_lstm$main.coverage" NAME="main Coverage Results" MODIFIED="1550416075637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/new_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2454">
-              <caret line="264" column="31" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="31" />
+            <state relative-caret-position="158">
+              <caret line="176" lean-forward="true" selection-start-line="176" selection-end-line="176" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -32,14 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/new_main.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/tensorflow/python/framework/errors_impl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1445">
-              <caret line="103" column="23" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="417">
+              <caret line="530" selection-start-line="530" selection-end-line="530" />
             </state>
           </provider>
         </entry>
@@ -47,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="115" column="14" selection-start-line="115" selection-start-column="14" selection-end-line="115" selection-end-column="14" />
+            <state relative-caret-position="489">
+              <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -57,10 +53,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/keras_preprocessing/text.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="300" selection-start-line="300" selection-end-line="300" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="56" column="35" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="35" />
+            <state relative-caret-position="112">
+              <caret line="20" column="33" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -97,6 +102,18 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="365" column="32" selection-start-line="365" selection-start-column="32" selection-end-line="365" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -108,8 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>VOCAB</find>
-      <find>keep</find>
       <find>todo</find>
       <find>bias</find>
       <find>laa</find>
@@ -133,11 +148,13 @@
       <find>19.</find>
       <find>print</find>
       <find>train_data</find>
-      <find>epoch</find>
       <find>optimizers</find>
       <find>memory</find>
       <find>linea</find>
       <find>loss</find>
+      <find>tokenizer</find>
+      <find>epoch</find>
+      <find>num_s</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -151,19 +168,19 @@
         <option value="$PROJECT_DIR$/helper.py" />
         <option value="$PROJECT_DIR$/normalize.py" />
         <option value="$PROJECT_DIR$/Shay_LSTM.py" />
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/NEW_LSTM.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/reader.py" />
+        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/new_main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="15" />
-    <option name="y" value="120" />
-    <option name="width" value="1555" />
-    <option name="height" value="840" />
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -298,7 +315,7 @@
       <workItem from="1550434238699" duration="626000" />
       <workItem from="1550436062327" duration="5362000" />
       <workItem from="1550441464373" duration="251000" />
-      <workItem from="1550441766206" duration="5476000" />
+      <workItem from="1550441766206" duration="20375000" />
     </task>
     <task id="LOCAL-00001" summary="Upload Pytorch running model, still not perfect">
       <created>1549906303456</created>
@@ -321,22 +338,36 @@
       <option name="project" value="LOCAL" />
       <updated>1549973172940</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added keras support. Share weights between Pytorch and Tensorflow implementations">
+      <created>1550447956810</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1550447956810</updated>
+    </task>
+    <task id="LOCAL-00005" summary="save model at the end of the training">
+      <created>1550453539420</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1550453539420</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161466000" />
+    <option name="totallyTimeSpent" value="176365000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16979866" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13486141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.42776203" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.37393767" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37378114" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -346,12 +377,12 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="13" visible="true" weight="0.42917848" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="13" visible="true" weight="0.7063922" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.32995737" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +390,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Upload Pytorch running model, still not perfect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upload Pytorch running model, still not perfect" />
+    <MESSAGE value="Added keras support. Share weights between Pytorch and Tensorflow implementations" />
+    <MESSAGE value="save model at the end of the training" />
+    <option name="LAST_COMMIT_MESSAGE" value="save model at the end of the training" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -389,70 +422,253 @@
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="output" />
+        <watch expression="count_pairs[39]" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>targets.data</expression-string>
+        <expression-string>new_sen = &quot;&quot;
+sen = &quot;01234&quot;.lower()
+
+# seed_text = [13,3,2,0,3]
+seed_text = [chars_to_idx[char] for char in sen]
+print(&quot;Before loop&quot;)
+for char in seed_text:
+    new_sen = new_sen + idx_to_chars[char]
+print(new_sen)
+
+
+for i in range(0,5):
+    print(&quot;Predicting for &quot;, seed_text)
+    predicted = model.predict(seed_text, verbose=0)
+    predicted_max = np.argmax(predicted[0], axis=1)[4]
+    
+    
+    new_sen = new_sen + idx_to_chars[predicted_max]
+    print(new_sen)
+    print(len(new_sen[i+1:]))
+    seed_text_new = [chars_to_idx[char] for char in new_sen[i+1:]]
+    print(seed_text_new)
+    seed_text = seed_text_new</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>targets</expression-string>
+        <expression-string>new_sen = &quot;&quot;
+sen = &quot;01234&quot;.lower()
+
+# seed_text = [13,3,2,0,3]
+seed_text = [chars_to_idx[char] for char in sen]
+print(&quot;Before loop&quot;)
+for char in seed_text:
+    new_sen = new_sen + idx_to_chars[char]
+print(new_sen)
+
+
+for i in range(0,100):
+    print(&quot;Predicting for &quot;, seed_text)
+    predicted = model.predict(seed_text, verbose=0)
+    predicted_max = np.argmax(predicted[0], axis=1)[4]
+    
+    
+    new_sen = new_sen + idx_to_chars[predicted_max]
+    print(new_sen)
+    print(len(new_sen[i+1:]))
+    seed_text_new = [chars_to_idx[char] for char in new_sen[i+1:]]
+    print(seed_text_new)
+    seed_text = seed_text_new</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>a = []
-a.append(new_inputs)</expression-string>
+        <expression-string>new_sen = &quot;&quot;
+sen = &quot;01234&quot;.lower()
+
+# seed_text = [13,3,2,0,3]
+seed_text = [chars_to_idx[char] for char in sen]
+print(&quot;Before loop&quot;)
+for char in seed_text:
+    new_sen = new_sen + idx_to_chars[char]
+print(new_sen)
+
+
+for i in range(0,100):
+    predicted = model.predict(seed_text, verbose=0)
+    predicted_max = np.argmax(predicted[0], axis=1)[4]
+    
+    
+    new_sen = new_sen + idx_to_chars[predicted_max]
+    print(new_sen)
+    print(len(new_sen[i+1:]))
+    seed_text_new = [chars_to_idx[char] for char in new_sen[i+1:]]
+    print(seed_text_new)
+    seed_text = seed_text_new</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>a = new_inputs.tolist()</expression-string>
+        <expression-string>new_sen = &quot;&quot;
+sen = &quot;01234&quot;.lower()
+
+# seed_text = [13,3,2,0,3]
+seed_text = [chars_to_idx[char] for char in sen]
+print(&quot;Before loop&quot;)
+for char in seed_text:
+    new_sen = new_sen + idx_to_chars[char]
+print(new_sen)
+
+
+for i in range(0,10):
+    predicted = model.predict(seed_text, verbose=0)
+    predicted_max = np.argmax(predicted[0], axis=1)[4]
+    
+    
+    new_sen = new_sen + idx_to_chars[predicted_max]
+    print(new_sen)
+    print(len(new_sen[i+1:]))
+    seed_text_new = [chars_to_idx[char] for char in new_sen[i+1:]]
+    print(seed_text_new)
+    seed_text = seed_text_new</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>a = list(new_inputs)</expression-string>
+        <expression-string>new_sen = &quot;&quot;
+sen = &quot;I am &quot;.lower()
+
+# seed_text = [13,3,2,0,3]
+seed_text = [chars_to_idx[char] for char in sen]
+print(&quot;Before loop&quot;)
+for char in seed_text:
+    new_sen = new_sen + idx_to_chars[char]
+print(new_sen)
+
+
+for i in range(0,10):
+    predicted = model.predict(seed_text, verbose=0)
+    predicted_max = np.argmax(predicted[0], axis=1)[4]
+    
+    
+    new_sen = new_sen + idx_to_chars[predicted_max]
+    print(new_sen)
+    print(len(new_sen[i+1:]))
+    seed_text_new = [chars_to_idx[char] for char in new_sen[i+1:]]
+    print(seed_text_new)
+    seed_text = seed_text_new</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>lala = []
-for param,weight in zip(model.parameters(),data):
-    param.data = torch.from_numpy(weight)
-    lala.append(param.data)</expression-string>
+        <expression-string>new_sen = &quot;&quot;
+sen = &quot;who i&quot;
+
+# seed_text = [13,3,2,0,3]
+seed_text = [chars_to_idx[char] for char in sen]
+print(&quot;Before loop&quot;)
+for char in seed_text:
+    new_sen = new_sen + idx_to_chars[char]
+print(new_sen)
+
+
+for i in range(0,10):
+    predicted = model.predict(seed_text, verbose=0)
+    predicted_max = np.argmax(predicted[0], axis=1)[4]
+    
+    
+    new_sen = new_sen + idx_to_chars[predicted_max]
+    print(new_sen)
+    print(len(new_sen[i+1:]))
+    seed_text_new = [chars_to_idx[char] for char in new_sen[i+1:]]
+    print(seed_text_new)
+    seed_text = seed_text_new</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>lala = []
-for param,weight in zip(model.parameters(),data):
-    param.data = weight
-    lala.append(param.data)</expression-string>
+        <expression-string>new_sen = &quot;&quot;
+seed_text = [13,3,2,0,3]
+print(&quot;Before loop&quot;)
+for char in seed_text:
+    new_sen = new_sen + idx_to_chars[char]
+print(new_sen)
+
+
+for i in range(0,10):
+    predicted = model.predict(seed_text, verbose=0)
+    predicted_max = np.argmax(predicted[0], axis=1)[4]
+    
+    
+    new_sen = new_sen + idx_to_chars[predicted_max]
+    print(new_sen)
+    print(len(new_sen[i+1:]))
+    seed_text_new = [chars_to_idx[char] for char in new_sen[i+1:]]
+    print(seed_text_new)
+    seed_text = seed_text_new</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>criterion(outputs, tt)</expression-string>
+        <expression-string>new_sen = &quot;&quot;
+seed_text = [13,3,2,0,3]
+print(&quot;Before loop&quot;)
+for char in seed_text:
+    new_sen = new_sen + idx_to_chars[char]
+print(new_sen)
+
+
+for i in range(0,10):
+    predicted = model.predict(seed_text, verbose=0)
+    predicted_max = np.argmax(predicted[0], axis=1)[4]
+    
+    
+    new_sen = new_sen + idx_to_chars[predicted_max]
+    print(new_sen)
+    print(len(new_sen[i+1:]))
+    seed_text_new = [chars_to_idx[char] for char in new_sen[:-4]]
+    print(seed_text_new)
+    seed_text = seed_text_new</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>loss = criterion(outputs, tt).view(model.batch_size,model.num_steps)/model.batch_size</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>loss = criterion(outputs, tt).view(model.batch_size,model.num_steps).sum(dim=1)/model.batch_size</expression-string>
+        <expression-string>new_sen = &quot;&quot;
+seed_text = [13,3,2,0,3]
+print(&quot;Before loop&quot;)
+for char in seed_text:
+    new_sen = new_sen + idx_to_chars[char]
+print(new_sen)
+
+
+for i in range(0,10):
+    predicted = model.predict(seed_text, verbose=0)
+    predicted_max = np.argmax(predicted[0], axis=1)[4]
+    
+    
+    new_sen = new_sen + idx_to_chars[predicted_max]
+    print(new_sen)
+    print(len(new_sen[i+1:]))
+    seed_text_new = [chars_to_idx[char] for char in new_sen[:-4]]
+    seed_text = seed_text_new</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>for j in range(next_words):         token_list = tokenizer.texts_to_sequences([seed_text])[0]
+token_list = pad_sequences([token_list], maxlen=max_sequence_len - 1, padding='pre')
+predicted = model.predict(token_list, verbose=0)
+np.argmax(predicted, axis=1)
+output_word = &quot;&quot;
+for word, index in tokenizer.word_index.items():             if
+index == predicted: output_word = word
+break
+seed_text += &quot; &quot; + output_word</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>inputs.data</expression-string>
         <language-id>Python</language-id>
@@ -609,13 +825,6 @@ for param,weight in zip(model.parameters(),data):
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="56" column="35" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FSRNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
@@ -642,30 +851,51 @@ for param,weight in zip(model.parameters(),data):
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="115" column="14" selection-start-line="115" selection-start-column="14" selection-end-line="115" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2454">
-          <caret line="264" column="31" selection-start-line="264" selection-start-column="27" selection-end-line="264" selection-end-column="31" />
+        <state relative-caret-position="325">
+          <caret line="365" column="32" selection-start-line="365" selection-start-column="32" selection-end-line="365" selection-end-column="32" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/keras_preprocessing/text.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="300" selection-start-line="300" selection-end-line="300" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/tensorflow/python/framework/errors_impl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="530" selection-start-line="530" selection-end-line="530" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/new_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="103" column="23" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="23" />
+        <state relative-caret-position="158">
+          <caret line="176" lean-forward="true" selection-start-line="176" selection-end-line="176" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

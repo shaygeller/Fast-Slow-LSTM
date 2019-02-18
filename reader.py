@@ -29,7 +29,7 @@ import tensorflow as tf
 
 
 def _read_words(filename):
-  with tf.gfile.GFile(filename, "rb") as f:
+  with tf.gfile.GFile(filename, "r") as f:
     return list(f.read())
 
 def _build_vocab(filename):
@@ -49,6 +49,8 @@ def _file_to_word_ids(filename, word_to_id):
   data = _read_words(filename)
   return [word_to_id[word] for word in data if word in word_to_id]
 
+def string_to_word_ids(chars, word_to_id):
+  return np.asarray([word_to_id[word] for word in chars if word in word_to_id])
 
 def ptb_raw_data(data_path=None, prefix="ptb"):
   """Load PTB raw data from data directory "data_path".
