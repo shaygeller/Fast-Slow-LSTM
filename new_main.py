@@ -25,9 +25,21 @@ import tensorflow as tf
 
 args = config.get_config()
 tokenizer = Tokenizer()
-is_train = False
+is_train = False # True- traning model for scrach. False-Load trained model
 
-def generate_text(seed_text, num_step, max_sequence_len, model, idx_to_chars, chars_to_idx):
+def generate_text(seed_text, num_step, number_of_new_chars, model, idx_to_chars, chars_to_idx):
+    """
+        Generate new characters from the language model.
+
+    :param seed_text: String of seed sentence. It's minimum length should be num_step.
+                        Best if it will be related to the trained text.
+    :param num_step: Step size of the input for the trained model.
+    :param number_of_new_chars: Number of new characters to generate.
+    :param model: Trained LM model.
+    :param idx_to_chars: Index to char dictionary
+    :param chars_to_idx: Char to index dictionaty
+    :return:
+    """
 
     # Trim too long seed sentence for the model
     seed_text = seed_text[:num_step].lower()
@@ -39,7 +51,7 @@ def generate_text(seed_text, num_step, max_sequence_len, model, idx_to_chars, ch
         new_sen = new_sen + idx_to_chars[char]
     print("Started from this sentence:\n",new_sen,"\n")
 
-    for i in range(0, max_sequence_len):
+    for i in range(0, number_of_new_chars):
         print("Predicting for ", seed_text)
         # Predict all the characters
         predicted = model.predict(seed_text, verbose=0)
@@ -58,7 +70,17 @@ def generate_text(seed_text, num_step, max_sequence_len, model, idx_to_chars, ch
 
 
 
-def perplexity(y_true, y_pred,num_steps, batch_size ):
+def bpc(y_true, y_pred, num_steps, batch_size):
+    """
+        Calculate BPC (not perplexity)
+
+    :param y_true: NpArray of labels . Should be size(batch_size,vocab_size)
+    :param y_pred: NpArray of logit predictions. Should be size(batch_size,num_steps,vocab_size)
+    :param num_steps: Number of steps of the LSTM
+    :param batch_size: Batch size
+    :return:
+    """
+
     # cross_entropy = tf.reduce_mean(K.sparse_categorical_crossentropy(y_true, y_pred))
     cross_entropy = tf.reduce_sum(K.sparse_categorical_crossentropy(y_true, y_pred)) / batch_size
     # cross_entropy = K.mean(K.sparse_categorical_crossentropy(y_true, y_pred))
@@ -80,7 +102,19 @@ def perplexity(y_true, y_pred,num_steps, batch_size ):
     return result
 
 
-def get_keras_model(embedding_dim, num_steps, batch_size, vocab_size, num_layers=3, f1_size=700, s1_size=400, f2_size=700):
+def get_keras_model(embedding_dim, num_steps, vocab_size, num_layers=3, f1_size=700, s1_size=400, f2_size=700):
+    """
+        Create FS-RNN model
+
+    :param embedding_dim:
+    :param num_steps:
+    :param vocab_size:
+    :param num_layers:
+    :param f1_size:
+    :param s1_size:
+    :param f2_size:
+    :return: Return model
+    """
 
     inputs1 = Input(shape=(None,))
 
@@ -112,10 +146,10 @@ def get_keras_model(embedding_dim, num_steps, batch_size, vocab_size, num_layers
     return model
 
 
-def perplexity_wrapper(batch_size, num_steps):
+def bpc_wrapper(batch_size, num_steps):
 
     def foo(y_pred,y_true):
-        return perplexity(y_pred,y_true,batch_size=batch_size,num_steps=num_steps)
+        return bpc(y_pred, y_true, batch_size=batch_size, num_steps=num_steps)
 
     return foo
 
@@ -141,7 +175,7 @@ if __name__ == "__main__":
     # model = PTB_Model(embedding_dim=args.embed_size, num_steps=args.num_steps, batch_size=args.batch_size,
     #                   vocab_size=vocab_size, num_layers=args.num_layers, dp_keep_prob=args.keep_prob)
 
-    model = get_keras_model(embedding_dim=args.embed_size, num_steps=args.num_steps, batch_size=args.batch_size,
+    model = get_keras_model(embedding_dim=args.embed_size, num_steps=args.num_steps,
                             vocab_size=vocab_size, num_layers=args.num_layers)
 
 
@@ -149,10 +183,10 @@ if __name__ == "__main__":
     # decay factor for learning rate
     lr_decay_base = args.lr_decay_rate
     # we will not touch lr for the first m_flat_lr epochs
-    perplexity_wrapped = perplexity_wrapper(args.batch_size, args.num_steps)
+    perplexity_wrapped = bpc_wrapper(args.batch_size, args.num_steps)
 
-    print("########## Training ##########################")
     if is_train:
+        print("########## Training ##########################")
         optimizer = optimizers.Adam(lr=lr, decay=lr_decay_base)
         model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=[perplexity_wrapped])
 
@@ -170,7 +204,8 @@ if __name__ == "__main__":
 
     else:
         # Load trained model
-        model = load_model('my_model.h5', custom_objects={'foo': perplexity_wrapped})
+        model_path = 'my_model.h5'
+        model = load_model(model_path, custom_objects={'foo': perplexity_wrapped})
 
     # Genetating New Sentences
     generate_text("cat a",args.num_steps, 50, model, idx_to_chars=id_to_word, chars_to_idx=word_to_id)
