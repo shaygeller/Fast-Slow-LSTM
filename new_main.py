@@ -109,6 +109,10 @@ if __name__ == "__main__":
                         validation_steps=len(valid_data)//(args.batch_size*args.num_steps),)
         # print('Train perplexity at epoch {}: {:8.2f}'.format(epoch, train_p))
         # print('Validation perplexity at epoch {}: {:8.2f}'.format(epoch, run_epoch(model, valid_data)))
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+
+    model.save(timestr+'my_model.h5')  # creates a HDF5 file 'my_model.h5'
+
     #
     #
     # print("########## Testing ##########################")
