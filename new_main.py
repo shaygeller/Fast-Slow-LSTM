@@ -223,6 +223,7 @@ if __name__ == "__main__":
     # Genetating New Sentences
     seed_string = "selling of standard & poor 's 500-stock index futures in chicago <unk> beat stocks downward seven big board stocks ual amr bankamerica walt disney capital cities\/abc philip morris and pacific telesis group stopped trading and never resumed"
     # seed_string = "we have no useful"
+
     generate_text(seed_string,num_step=args.num_steps, number_of_new_chars=10, model=model,
                   idx_to_chars=id_to_word, chars_to_idx=word_to_id)
     # generate_text(seed_string,150, 51, model, idx_to_chars=id_to_word, chars_to_idx=word_to_id)
