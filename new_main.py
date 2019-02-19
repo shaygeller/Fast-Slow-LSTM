@@ -54,7 +54,7 @@ def generate_text(seed_text, num_step, number_of_new_chars, model, idx_to_chars,
     for i in range(0, number_of_new_chars):
         print("Predicting for ", seed_text)
         # Predict all the characters
-        predicted = model.predict(seed_text, verbose=0)
+        predicted = model.predict(seed_text, batch_size=128, verbose=1)
 
         # Take only the last character (the new one)
         predicted_max = np.argmax(predicted[0], axis=1)[4]
@@ -148,10 +148,10 @@ def get_keras_model(embedding_dim, num_steps, vocab_size, num_layers=3, f1_size=
 
 def bpc_wrapper(batch_size, num_steps):
 
-    def foo(y_pred,y_true):
+    def perplexity(y_pred,y_true):
         return bpc(y_pred, y_true, batch_size=batch_size, num_steps=num_steps)
 
-    return foo
+    return perplexity
 
 
 if __name__ == "__main__":
@@ -204,8 +204,12 @@ if __name__ == "__main__":
 
     else:
         # Load trained model
-        model_path = 'my_model.h5'
-        model = load_model(model_path, custom_objects={'foo': perplexity_wrapped})
+        model_path = '20190218-223155my_model.h5'
+        model = load_model(model_path, custom_objects={'perplexity': perplexity_wrapped})
+        print("summery")
+        print(model.summary())
+
 
     # Genetating New Sentences
-    generate_text("cat a",args.num_steps, 50, model, idx_to_chars=id_to_word, chars_to_idx=word_to_id)
+    seed = "The name America was first recorded in 1507. Christie's auction house says a two-dimensional globe created by Martin Waldseemuller was the earliest recorded use of the term. The name was also used (together with the related term Amerigen) in the Cosmographiae Introductio, apparently written by Matthias Ringmann, in reference to South America. It was applied to both North and South America by Gerardus Mercator in 1538. America derives from Americus, the Latin version of Italian explorer Amerigo Vespucci's first name. The feminine form America accorded with the feminine names of Asia, Africa, and Europa"
+    generate_text(seed, args.num_steps, 50, model, idx_to_chars=id_to_word, chars_to_idx=word_to_id)
