@@ -25,7 +25,7 @@ import tensorflow as tf
 
 args = config.get_config()
 tokenizer = Tokenizer()
-is_training = True # True - traning model from scrach. False-Load trained model
+is_training = False # True - traning model from scrach. False-Load trained model
 is_testing = False # True - testing model on test set. False- Don't perform testing
 
 def generate_text(seed_text, num_step, number_of_new_chars, model, idx_to_chars, chars_to_idx):
@@ -207,7 +207,7 @@ if __name__ == "__main__":
     else:
         # Load trained model
         # model_path = 'my_model.h5'
-        model_path = '20190219-113957my_model.h5'
+        model_path = '20190219-132847my_model.h5'
         model = load_model(model_path, custom_objects={'BPC': perplexity_wrapped})
         model.summary()
 
@@ -221,8 +221,8 @@ if __name__ == "__main__":
                             )
 
     # Genetating New Sentences
-    # seed_string = "selling of standard & poor 's 500-stock index futures in chicago <unk> beat stocks downward seven big board stocks ual amr bankamerica walt disney capital cities\/abc philip morris and pacific telesis group stopped trading and never resumed"
-    seed_string = "we have no useful"
+    seed_string = "selling of standard & poor 's 500-stock index futures in chicago <unk> beat stocks downward seven big board stocks ual amr bankamerica walt disney capital cities\/abc philip morris and pacific telesis group stopped trading and never resumed"
+    # seed_string = "we have no useful"
     generate_text(seed_string,num_step=args.num_steps, number_of_new_chars=10, model=model,
                   idx_to_chars=id_to_word, chars_to_idx=word_to_id)
     # generate_text(seed_string,150, 51, model, idx_to_chars=id_to_word, chars_to_idx=word_to_id)
