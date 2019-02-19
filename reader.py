@@ -6,11 +6,6 @@ import collections
 import os
 
 
-import torch 
-import torch.nn as nn
-from torch.autograd import Variable
-
-
 import collections
 import os
 
