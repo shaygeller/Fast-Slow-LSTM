@@ -25,7 +25,8 @@ import tensorflow as tf
 
 args = config.get_config()
 tokenizer = Tokenizer()
-is_train = False # True- traning model for scrach. False-Load trained model
+is_training = True # True - traning model from scrach. False-Load trained model
+is_testing = False # True - testing model on test set. False- Don't perform testing
 
 def generate_text(seed_text, num_step, number_of_new_chars, model, idx_to_chars, chars_to_idx):
     """
@@ -53,21 +54,22 @@ def generate_text(seed_text, num_step, number_of_new_chars, model, idx_to_chars,
 
     for i in range(0, number_of_new_chars):
         print("Predicting for ", seed_text)
+        print("Length of the list is:, ",len(seed_text))
         # Predict all the characters
-        predicted = model.predict(seed_text, verbose=0)
+        predicted = model.predict(np.asarray(seed_text).reshape(1,num_step), verbose=0)
+        # predicted = model.predict(seed_text, verbose=0)
 
         # Take only the last character (the new one)
-        predicted_max = np.argmax(predicted[0], axis=1)[4]
+        new_char_idx = np.argmax(predicted[0], axis=1)[num_step-1]
 
         # Append the new character to the sentence
-        new_sen = new_sen + idx_to_chars[predicted_max]
+        new_sen = new_sen + idx_to_chars[new_char_idx]
         print(new_sen)
         print()
 
         # Create the new seed sentence with the new char for the next iteration
         seed_text_new = [chars_to_idx[char] for char in new_sen[i + 1:]]
         seed_text = seed_text_new
-
 
 
 def bpc(y_true, y_pred, num_steps, batch_size):
@@ -133,8 +135,8 @@ def get_keras_model(embedding_dim, num_steps, vocab_size, num_layers=3, f1_size=
     for i in range(2, num_layers):
             fast2_out = LSTM(f2_size, return_state=False, return_sequences=True, use_bias=False)(fast2_out)
 
-    out = TimeDistributed(Dense(vocab_size, activation='linear'))(fast2_out)
-    # out = TimeDistributed(Dense(vocab_size, activation='softmax'))(fast2_out)
+    # out = TimeDistributed(Dense(vocab_size, activation='linear'))(fast2_out)
+    out = TimeDistributed(Dense(vocab_size, activation='softmax'))(fast2_out)
 
     model = Model(inputs=inputs1, outputs=out)
 
@@ -148,10 +150,10 @@ def get_keras_model(embedding_dim, num_steps, vocab_size, num_layers=3, f1_size=
 
 def bpc_wrapper(batch_size, num_steps):
 
-    def foo(y_pred,y_true):
+    def BPC(y_pred, y_true):
         return bpc(y_pred, y_true, batch_size=batch_size, num_steps=num_steps)
 
-    return foo
+    return BPC
 
 
 if __name__ == "__main__":
@@ -175,24 +177,24 @@ if __name__ == "__main__":
     # model = PTB_Model(embedding_dim=args.embed_size, num_steps=args.num_steps, batch_size=args.batch_size,
     #                   vocab_size=vocab_size, num_layers=args.num_layers, dp_keep_prob=args.keep_prob)
 
-    model = get_keras_model(embedding_dim=args.embed_size, num_steps=args.num_steps,
-                            vocab_size=vocab_size, num_layers=args.num_layers)
-
-
     lr = args.lr_start
     # decay factor for learning rate
     lr_decay_base = args.lr_decay_rate
     # we will not touch lr for the first m_flat_lr epochs
     perplexity_wrapped = bpc_wrapper(args.batch_size, args.num_steps)
 
-    if is_train:
+    if is_training:
+
+        model = get_keras_model(embedding_dim=args.embed_size, num_steps=args.num_steps,
+                                vocab_size=vocab_size, num_layers=args.num_layers)
+
         print("########## Training ##########################")
         optimizer = optimizers.Adam(lr=lr, decay=lr_decay_base)
         model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=[perplexity_wrapped])
 
         model.fit_generator(reader.ptb_iterator(train_data, args.batch_size, args.num_steps),
-                            # steps_per_epoch=100,
-                            steps_per_epoch=len(train_data)//(args.batch_size*args.num_steps),
+                            steps_per_epoch=10,
+                            # steps_per_epoch=len(train_data)//(args.batch_size*args.num_steps),
                             epochs=args.max_epoch,
                             verbose=1,
                             validation_data=reader.ptb_iterator(valid_data, args.batch_size, args.num_steps),
@@ -204,8 +206,23 @@ if __name__ == "__main__":
 
     else:
         # Load trained model
-        model_path = 'my_model.h5'
-        model = load_model(model_path, custom_objects={'foo': perplexity_wrapped})
+        # model_path = 'my_model.h5'
+        model_path = '20190219-113957my_model.h5'
+        model = load_model(model_path, custom_objects={'BPC': perplexity_wrapped})
+        model.summary()
+
+    # Test Trained model
+    if is_testing:
+        print("########## Testing ##########################")
+        model.fit_generator(reader.ptb_iterator(test_data, args.batch_size, args.num_steps),
+                            steps_per_epoch=1000,
+                            # steps_per_epoch=len(train_data)//(args.batch_size*args.num_steps),
+                            verbose=1,
+                            )
 
     # Genetating New Sentences
-    generate_text("cat a",args.num_steps, 50, model, idx_to_chars=id_to_word, chars_to_idx=word_to_id)
+    # seed_string = "selling of standard & poor 's 500-stock index futures in chicago <unk> beat stocks downward seven big board stocks ual amr bankamerica walt disney capital cities\/abc philip morris and pacific telesis group stopped trading and never resumed"
+    seed_string = "we have no useful"
+    generate_text(seed_string,num_step=args.num_steps, number_of_new_chars=10, model=model,
+                  idx_to_chars=id_to_word, chars_to_idx=word_to_id)
+    # generate_text(seed_string,150, 51, model, idx_to_chars=id_to_word, chars_to_idx=word_to_id)
