@@ -55,7 +55,7 @@ train_arg.add_argument('--is_train', type=str2bool, default=True, help='')
 train_arg.add_argument('--optimizer', type=str, default='rmsprop', help='')
 
 train_arg.add_argument('--max_epoch', type=int, default=1, help='')
-train_arg.add_argument('--max_max_epoch', type=int, default=200, help='')
+train_arg.add_argument('--max_max_epoch', type=int, default=1, help='')
 
 
 train_arg.add_argument('--max_step', type=int, default=1000000, help='')

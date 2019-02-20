@@ -95,7 +95,7 @@ def ptb_iterator(raw_data, batch_size, num_steps):
   batch_len = data_len // batch_size
   data = np.zeros([batch_size, batch_len], dtype=np.int32)
   for i in range(batch_size):
-    data[i] = raw_data[batch_len * i:batch_len * (i + 1)]
+    data[i] = raw_data[i:batch_len + (i)]
 
 
   epoch_size = (batch_len - 1) // num_steps
