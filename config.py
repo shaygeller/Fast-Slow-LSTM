@@ -18,7 +18,7 @@ def add_argument_group(name):
 
 # Network
 net_arg = add_argument_group('Network')
-net_arg.add_argument('--num_steps', type=int, default=150, help='')
+net_arg.add_argument('--num_steps', type=int, default=20, help='')
 # net_arg.add_argument('--num_steps', type=int, default=150, help='')
 # net_arg.add_argument('--cell_size', type=int, default=100, help='')
 net_arg.add_argument('--cell_size', type=int, default=700, help='')
