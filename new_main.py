@@ -364,19 +364,19 @@ def generate(epoch):
 
     num_chars_to_generate = 100
     # Generate sentences every 10 epochs
-    # if epoch % 10 == 0 and epoch > 0:
-    # b = random.randint(0, n - 1)
-    seed = "in its construction spending report"
-    assert len(seed) < num_chars_to_generate
+    if epoch % 10 == 0 and epoch > 0:
+        # b = random.randint(0, n - 1)
+        seed = "in its construction spending report"
+        assert len(seed) < num_chars_to_generate
 
-    seed = list(seed)
-    seed = [word_to_id[char] for char in seed]
-    seed = np.asarray(seed, dtype=np.float32)
+        seed = list(seed)
+        seed = [word_to_id[char] for char in seed]
+        seed = np.asarray(seed, dtype=np.float32)
 
-    gen = generate_seq2(model, seed, vocab_size, num_chars_to_generate)
+        gen = generate_seq2(model, seed, vocab_size, num_chars_to_generate)
 
-    print('*** [', decode(seed,id_to_word), '] ', decode(gen[len(seed):], id_to_word))
-    print()
+        print('*** [', decode(seed,id_to_word), '] ', decode(gen[len(seed):], id_to_word))
+        print()
 
 if __name__ == "__main__":
 
