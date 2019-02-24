@@ -406,7 +406,8 @@ if __name__ == "__main__":
                                 vocab_size=vocab_size, num_layers=args.num_layers,
                                 dropout=args.keep_prob)
 
-        optimizer = optimizers.Adam(lr=args.lr_start, decay=args.lr_decay_rate)
+        # optimizer = optimizers.Adam(lr=args.lr_start, decay=args.lr_decay_rate)
+        optimizer = optimizers.Adam(lr=args.lr_start)
 
         model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=[perplexity_wrapped])
 
