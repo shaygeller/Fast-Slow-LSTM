@@ -18,7 +18,7 @@ def add_argument_group(name):
 
 # Network
 net_arg = add_argument_group('Network')
-net_arg.add_argument('--num_steps', type=int, default=20, help='')
+net_arg.add_argument('--num_steps', type=int, default=50, help='')
 # net_arg.add_argument('--num_steps', type=int, default=150, help='')
 # net_arg.add_argument('--cell_size', type=int, default=100, help='')
 net_arg.add_argument('--cell_size', type=int, default=700, help='')
@@ -40,7 +40,8 @@ net_arg.add_argument('--use_terminal_symbol', type=str2bool, default=True, help=
 # Data
 data_arg = add_argument_group('Data')
 data_arg.add_argument('--task', type=str, default='ptb')
-data_arg.add_argument('--batch_size', type=int, default=128)
+# data_arg.add_argument('--batch_size', type=int, default=128)
+data_arg.add_argument('--batch_size', type=int, default=32)
 data_arg.add_argument('--vocab_size', type=int, default=50)
 data_arg.add_argument('--input_size', type=int, default=300)
 data_arg.add_argument('--min_data_length', type=int, default=5)
@@ -54,7 +55,7 @@ train_arg = add_argument_group('Training')
 train_arg.add_argument('--is_train', type=str2bool, default=True, help='')
 train_arg.add_argument('--optimizer', type=str, default='rmsprop', help='')
 
-train_arg.add_argument('--max_epoch', type=int, default=1, help='')
+train_arg.add_argument('--max_epoch', type=int, default=50, help='')
 train_arg.add_argument('--max_max_epoch', type=int, default=1, help='')
 
 

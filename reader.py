@@ -5,7 +5,7 @@ from __future__ import print_function
 import collections
 import os
 
-
+import keras
 import collections
 import os
 
@@ -62,6 +62,7 @@ def ptb_raw_data(data_path=None, prefix="ptb"):
   """
 
   train_path = os.path.join(args.data_path, "train")
+  # train_path = os.path.join(args.data_path, "train_short")
   valid_path = os.path.join(args.data_path, "valid")
   test_path = os.path.join(args.data_path, "test")
 
@@ -73,7 +74,7 @@ def ptb_raw_data(data_path=None, prefix="ptb"):
 
 
 
-def ptb_iterator(raw_data, batch_size, num_steps):
+def ptb_iterator(raw_data, batch_size, num_steps,vocab_size):
   """Iterate on the raw PTB data.
   This generates batch_size pointers into the raw PTB data, and allows
   minibatch iteration along these pointers.
@@ -111,8 +112,29 @@ def ptb_iterator(raw_data, batch_size, num_steps):
   while True:
     x = data[:, i*num_steps:(i+1)*num_steps]
     y = data[:, i*num_steps+1:(i+1)*num_steps+1]
-    yield (x, y.reshape(batch_size,num_steps,1))
+    # yield (x, y.reshape(batch_size,num_steps,1))
+    x = to_categorical(x, vocab_size)
+    y = to_categorical(y, vocab_size)
+    yield (x, y)
 
     i += 1
     if i == epoch_size:
       i = 0
+
+def to_categorical(batch, num_classes):
+    """
+    Converts a batch of length-padded integer sequences to a one-hot encoded sequence
+    :param batch:
+    :param num_classes:
+    :return:
+    """
+
+    b, l = batch.shape
+
+    out = np.zeros((b, l, num_classes))
+
+    for i in range(b):
+      seq = batch[0, :]
+      out[i, :, :] = keras.utils.to_categorical(seq, num_classes=num_classes)
+
+    return out

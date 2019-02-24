@@ -4,7 +4,6 @@
     <list default="true" id="48c16af7-290a-4780-86e7-4a02600ca305" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ptb/train" beforeDir="false" afterPath="$PROJECT_DIR$/data/ptb/train" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/reader.py" afterDir="false" />
     </list>
@@ -15,16 +14,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Pytorch_fast_slow_lstm$new_main.coverage" NAME="new_main Coverage Results" MODIFIED="1550782021869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pytorch_fast_slow_lstm$new_main.coverage" NAME="new_main Coverage Results" MODIFIED="1551015850596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Pytorch_fast_slow_lstm$main.coverage" NAME="main Coverage Results" MODIFIED="1550416075637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/new_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-349">
-              <caret line="268" column="59" selection-end-line="308" />
+            <state relative-caret-position="4828">
+              <caret line="292" column="6" selection-start-line="292" selection-start-column="6" selection-end-line="292" selection-end-column="6" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -33,10 +32,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/ptb/train">
+        <entry file="file://$PROJECT_DIR$/data/ptb/train_short">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="23" column="4" selection-start-line="21" selection-start-column="1" selection-end-line="23" selection-end-column="4" />
+            <state relative-caret-position="365">
+              <caret line="402" column="1" selection-start-line="402" selection-start-column="1" selection-end-line="402" selection-end-column="208" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/tensorflow/python/framework/errors_impl.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8806">
+              <caret line="530" selection-start-line="530" selection-end-line="530" />
             </state>
           </provider>
         </entry>
@@ -44,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
+            <state relative-caret-position="109">
+              <caret line="122" column="4" selection-start-line="122" selection-start-column="4" selection-end-line="122" selection-end-column="4" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -56,8 +64,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+            <state relative-caret-position="171">
+              <caret line="57" column="57" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/keras/layers/recurrent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="11152">
+              <caret line="675" selection-start-line="675" selection-end-line="675" />
             </state>
           </provider>
         </entry>
@@ -73,36 +90,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>orthogonal_</find>
-      <find>optimi</find>
-      <find>print(</find>
-      <find>step</find>
-      <find>7,  1,  0,  6,  4</find>
-      <find>load</find>
-      <find>561628</find>
-      <find>19.5</find>
-      <find>inputs</find>
-      <find>50, 128</find>
-      <find>mama</find>
-      <find>mamam</find>
-      <find>19.56</find>
-      <find>np.load</find>
-      <find>19.</find>
-      <find>print</find>
-      <find>train_data</find>
-      <find>optimizers</find>
-      <find>memory</find>
-      <find>linea</find>
-      <find>loss</find>
-      <find>tokenizer</find>
       <find>data</find>
       <find>data_path</find>
       <find>6904</find>
-      <find>epoch</find>
-      <find>epo</find>
       <find>e regatta rubens</find>
-      <find>regatta rubens sim</find>
       <find>num_s</find>
+      <find>d</find>
+      <find>regatta rubens sim</find>
+      <find>epo</find>
+      <find>embedding</find>
+      <find>needs to know its batch size</find>
+      <find>fit_ge</find>
+      <find>keep_prob</find>
+      <find>epoch</find>
+      <find>input</find>
+      <find>lala</find>
+      <find>batch_shape</find>
+      <find>softmax</find>
+      <find>batch</find>
+      <find>get_</find>
+      <find>compile</find>
+      <find>lr</find>
+      <find>Epoch 1/1</find>
+      <find>339/1339</find>
+      <find>1339/1339</find>
+      <find>are the commerce depart</find>
+      <find>adam</find>
+      <find>get_keras_model</find>
+      <find>we have no useful information on</find>
+      <find>sample</find>
+      <find>max_epoch</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -119,17 +136,18 @@
         <option value="$PROJECT_DIR$/NEW_LSTM.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/data/ptb/train" />
+        <option value="$PROJECT_DIR$/data/ptb/train_short" />
+        <option value="$PROJECT_DIR$/reader.py" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/new_main.py" />
-        <option value="$PROJECT_DIR$/reader.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+    <option name="x" value="-1764" />
+    <option name="y" value="-28" />
+    <option name="width" value="1551" />
+    <option name="height" value="839" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -207,9 +225,6 @@
       <module name="Pytorch fast-slow-lstm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\User\Anaconda3\envs\ml1\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -259,7 +274,11 @@
       <workItem from="1550441766206" duration="25627000" />
       <workItem from="1550572555713" duration="4023000" />
       <workItem from="1550578141047" duration="2664000" />
-      <workItem from="1550770516834" duration="11156000" />
+      <workItem from="1550770516834" duration="38023000" />
+      <workItem from="1550950251389" duration="4019000" />
+      <workItem from="1550954964402" duration="241000" />
+      <workItem from="1550955383642" duration="9038000" />
+      <workItem from="1550997578332" duration="16362000" />
     </task>
     <task id="LOCAL-00001" summary="Upload Pytorch running model, still not perfect">
       <created>1549906303456</created>
@@ -331,38 +350,45 @@
       <option name="project" value="LOCAL" />
       <updated>1550608292969</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added generated_seq that uses random character peeking">
+      <created>1550784741019</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1550784741019</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199460000" />
+    <option name="totallyTimeSpent" value="255987000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1295302" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10714286" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.42776203" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798658" weight="0.5906516" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.48827294" weight="0.42578548" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="SonarLint" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.26107383" side_tool="true" visible="true" weight="0.34702548" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.14712153" side_tool="true" visible="true" weight="0.35861322" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49932885" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49932885" weight="0.20254958" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="13" sideWeight="0.7389262" visible="true" weight="0.34702548" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49626866" weight="0.20151679" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="13" sideWeight="0.85287845" visible="true" weight="0.35861322" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.31073827" />
+      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.2468017" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +441,8 @@
     <MESSAGE value="Added new sentence generation functionality. Cleaned the code a bit" />
     <MESSAGE value="Added documentation" />
     <MESSAGE value="Add training\testing phases" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add training\testing phases" />
+    <MESSAGE value="Added generated_seq that uses random character peeking" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added generated_seq that uses random character peeking" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -442,13 +469,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/new_main.py</url>
-          <line>99</line>
-          <option name="timeStamp" value="66" />
+          <line>35</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/new_main.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="71" />
+          <line>69</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/new_main.py</url>
+          <line>102</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/new_main.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/new_main.py</url>
+          <line>346</line>
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -456,55 +498,172 @@
       <configuration name="PythonConfigurationType">
         <watch expression="output" />
         <watch expression="count_pairs[39]" />
+        <watch expression="toh" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>aaaa = probs[0][num_step-1]
-next_token = sample(aaaa, temperature)</expression-string>
+        <expression-string># convert the integer sequence to a categorical one
+toh = reader.to_categorical(tokens[None, :], numchars)
+
+for i in range(ls, size - 1):
+    # predict next characters (for the whole sequence)
+    probs = model.predict(toh)
+
+    # Extract the i-th probability vector and sample an index from it
+    next_token = sample2(probs[0, i - 1, :], temperature)
+
+    tokens[i] = next_token
+
+    # update the one-hot encoding
+    toh[0, i, 0] = 0
+    toh[0, i, next_token] = 1</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>aaaa = probs[0][num_step-1]
-next_token = sample(aaaa, 0.0)</expression-string>
+        <expression-string>tokens = np.concatenate([seed, np.zeros(size - ls)])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>probs[0][num_step-1]</expression-string>
+        <expression-string>score = model.evaluate_generator(reader.ptb_iterator(test_data, args.batch_size, args.num_steps, vocab_size),
+                   steps=len(test_data)//(args.batch_size*args.num_steps),
+                   max_queue_size=10, workers=1,verbose=2)
+print('Test loss:', score[0])
+print('Test BPC:', score[1])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>probs[0][1]</expression-string>
+        <expression-string>score = model.evaluate_generator(reader.ptb_iterator(test_data, args.batch_size, args.num_steps, vocab_size),
+                   steps=len(test_data)//(args.batch_size*args.num_steps),
+                   max_queue_size=10, workers=1,verbose=1)
+print('Test loss:', score[0])
+print('Test accuracy:', score[1])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>probs[0,4]</expression-string>
+        <expression-string>score = model.evaluate_generator(reader.ptb_iterator(test_data, args.batch_size, args.num_steps, vocab_size),
+                   steps=len(test_data)//(args.batch_size*args.num_steps),
+                   max_queue_size=10, workers=1,verbose=0)
+print('Test loss:', score[0])
+print('Test accuracy:', score[1])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>probs[5]</expression-string>
+        <expression-string>ls = seed.shape[0]
+
+# Due to the way Keras RNNs work, we feed the model a complete sequence each time. At first it's just the seed,
+# zero-padded to the right length. With each iteration we sample and set the next character.
+
+tokens = np.concatenate([seed, np.zeros(size - ls)])
+
+# convert the integer sequence to a categorical one
+toh = tokens[None, :50]
+
+for i in range(ls, size - 1):
+    # predict next characters (for the whole sequence)
+    probs = model.predict(toh)
+
+    # Extract the i-th probability vector and sample an index from it
+    next_token = sample2(probs[0, i - 1, :], temperature)
+# 
+#     tokens[i] = next_token
+# 
+#     # update the one-hot encoding
+#     toh[0, i, 0] = 0
+#     toh[0, i, next_token] = 1
+# 
+# print([int(t) for t in tokens])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>probs[num_step-1,:]</expression-string>
+        <expression-string>ls = seed.shape[0]
+
+# Due to the way Keras RNNs work, we feed the model a complete sequence each time. At first it's just the seed,
+# zero-padded to the right length. With each iteration we sample and set the next character.
+
+tokens = np.concatenate([seed, np.zeros(size - ls)])
+
+# convert the integer sequence to a categorical one
+toh = tokens[None, :50]
+
+for i in range(ls, size - 1):
+    # predict next characters (for the whole sequence)
+    probs = model.predict(toh)
+
+#     # Extract the i-th probability vector and sample an index from it
+#     next_token = sample2(probs[0, i - 1, :], temperature)
+# 
+#     tokens[i] = next_token
+# 
+#     # update the one-hot encoding
+#     toh[0, i, 0] = 0
+#     toh[0, i, next_token] = 1
+# 
+# print([int(t) for t in tokens])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>probs[num_step-1]</expression-string>
+        <expression-string>ls = seed.shape[0]
+
+# Due to the way Keras RNNs work, we feed the model a complete sequence each time. At first it's just the seed,
+# zero-padded to the right length. With each iteration we sample and set the next character.
+
+tokens = np.concatenate([seed, np.zeros(size - ls)])
+
+# convert the integer sequence to a categorical one
+toh = tokens[None, :50]
+# 
+# for i in range(ls, size - 1):
+#     # predict next characters (for the whole sequence)
+#     probs = model.predict(toh)
+# 
+#     # Extract the i-th probability vector and sample an index from it
+#     next_token = sample2(probs[0, i - 1, :], temperature)
+# 
+#     tokens[i] = next_token
+# 
+#     # update the one-hot encoding
+#     toh[0, i, 0] = 0
+#     toh[0, i, next_token] = 1
+# 
+# print([int(t) for t in tokens])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>next_token = sample(probs[0, i - 1, :], temperature)</expression-string>
+        <expression-string>ls = seed.shape[0]
+
+# Due to the way Keras RNNs work, we feed the model a complete sequence each time. At first it's just the seed,
+# zero-padded to the right length. With each iteration we sample and set the next character.
+
+tokens = np.concatenate([seed, np.zeros(size - ls)])
+
+# convert the integer sequence to a categorical one
+toh = tokens[None, :50]
+
+for i in range(ls, size - 1):
+    # predict next characters (for the whole sequence)
+    probs = model.predict(toh)
+
+    # Extract the i-th probability vector and sample an index from it
+    next_token = sample2(probs[0, i - 1, :], temperature)
+
+    tokens[i] = next_token
+
+    # update the one-hot encoding
+    toh[0, i, 0] = 0
+    toh[0, i, next_token] = 1
+
+print([int(t) for t in tokens])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -672,13 +831,6 @@ seed_text += &quot; &quot; + output_word</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/ptb/test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="2" selection-start-line="6" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/keras_preprocessing/text.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4862">
@@ -722,6 +874,13 @@ seed_text += &quot; &quot; + output_word</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/shay/Lib/site-packages/tensorflow/contrib/keras/python/keras/engine/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="1694" column="6" selection-start-line="1694" selection-start-column="6" selection-end-line="1694" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/tensorflow/python/framework/errors_impl.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8806">
@@ -729,24 +888,45 @@ seed_text += &quot; &quot; + output_word</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ml1/Lib/site-packages/keras/layers/recurrent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11152">
+          <caret line="675" selection-start-line="675" selection-end-line="675" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data/ptb/train">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="4" selection-start-line="21" selection-start-column="1" selection-end-line="23" selection-end-column="4" />
+        <state relative-caret-position="306">
+          <caret line="1597" column="21" selection-start-line="1597" selection-start-column="21" selection-end-line="1597" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/ptb/test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="2" selection-start-line="6" selection-end-line="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+        <state relative-caret-position="171">
+          <caret line="57" column="57" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/ptb/train_short">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="402" column="1" selection-start-line="402" selection-start-column="1" selection-end-line="402" selection-end-column="208" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        <state relative-caret-position="109">
+          <caret line="122" column="4" selection-start-line="122" selection-start-column="4" selection-end-line="122" selection-end-column="4" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
@@ -755,8 +935,8 @@ seed_text += &quot; &quot; + output_word</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/new_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-349">
-          <caret line="268" column="59" selection-end-line="308" />
+        <state relative-caret-position="4828">
+          <caret line="292" column="6" selection-start-line="292" selection-start-column="6" selection-end-line="292" selection-end-column="6" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
