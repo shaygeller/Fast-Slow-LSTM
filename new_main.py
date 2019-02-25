@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 import random
+import csv
 
 from keras.models import load_model
 
@@ -360,23 +361,36 @@ def generate_seq2(
 def decode(seq, idx_to_char):
         return ''.join(idx_to_char[id] for id in seq)
 
-def generate(epoch):
+def generate(epoch, logs):
 
-    num_chars_to_generate = 100
+    num_chars_to_generate = 200
     # Generate sentences every 10 epochs
-    if epoch % 10 == 0 and epoch > 0:
-        # b = random.randint(0, n - 1)
-        seed = "in its construction spending report"
-        assert len(seed) < num_chars_to_generate
+    # b = random.randint(0, n - 1)
+    seed = "in its construction spending report"
+    assert len(seed) < num_chars_to_generate
 
-        seed = list(seed)
-        seed = [word_to_id[char] for char in seed]
-        seed = np.asarray(seed, dtype=np.float32)
+    seed = list(seed)
+    seed = [word_to_id[char] for char in seed]
+    seed = np.asarray(seed, dtype=np.float32)
 
-        gen = generate_seq2(model, seed, vocab_size, num_chars_to_generate)
+    gen = generate_seq2(model, seed, vocab_size, num_chars_to_generate)
 
-        print('*** [', decode(seed,id_to_word), '] ', decode(gen[len(seed):], id_to_word))
-        print()
+    formatted_generated_text = '*** [', decode(seed,id_to_word), '] ', decode(gen[len(seed):], id_to_word)
+    print(formatted_generated_text)
+    print()
+
+    with open('train_log_file.csv', mode='a') as train_log_file:
+        fieldnames = ['epoch', 'val_BPC', 'val_loss', 'train_BPC', 'train_loss', 'training_time (seconds)', 'generated_text']
+        writer = csv.DictWriter(train_log_file, fieldnames=fieldnames)
+
+        writer.writeheader()
+        writer.writerow({'epoch': epoch,
+                         'val_BPC': logs['val_BPC'],
+                         'val_loss': logs['val_loss'],
+                         'train_BPC': logs['BPC'],
+                         'train_loss': logs['loss'],
+                         'training_time (seconds)': time.time() - starting_time,
+                         'generated_text': formatted_generated_text})
 
 if __name__ == "__main__":
 
@@ -401,6 +415,7 @@ if __name__ == "__main__":
     perplexity_wrapped = bpc_wrapper(args.batch_size, args.num_steps)
 
     if is_training:
+        starting_time = time.time()
 
         model = get_keras_model(embedding_dim=args.embed_size, num_steps=args.num_steps,
                                 vocab_size=vocab_size, num_layers=args.num_layers,
@@ -413,7 +428,7 @@ if __name__ == "__main__":
 
         # Generate text callback
         generate_stuff = keras.callbacks.LambdaCallback(
-            on_epoch_end=lambda epoch, logs: generate(epoch))
+            on_epoch_end=lambda epoch, logs: generate(epoch, logs))
 
         print("########## Training ##########################")
 

@@ -61,8 +61,8 @@ def ptb_raw_data(data_path=None, prefix="ptb"):
     where each of the data objects can be passed to PTBIterator.
   """
 
-  train_path = os.path.join(args.data_path, "train")
-  # train_path = os.path.join(args.data_path, "train_short")
+  # train_path = os.path.join(args.data_path, "train")
+  train_path = os.path.join(args.data_path, "train_short")
   valid_path = os.path.join(args.data_path, "valid")
   test_path = os.path.join(args.data_path, "test")
 
