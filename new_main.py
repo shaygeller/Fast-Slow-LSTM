@@ -4,6 +4,7 @@ import random
 import csv
 
 from keras.models import load_model
+from keras.callbacks import Callback
 
 import keras
 
@@ -33,7 +34,68 @@ import tensorflow as tf
 args = config.get_config()
 tokenizer = Tokenizer()
 is_training = True # True - traning model from scrach. False-Load trained model
-is_testing = True # True - testing model on test set. False- Don't perform testing
+is_testing = False # True - testing model on test set. False- Don't perform testing
+
+
+class WeightsSaver(Callback):
+    def __init__(self, number_of_batches_between_saves, model_name):
+        self.number_of_batches_between_saves = number_of_batches_between_saves
+        self.model_name = model_name
+        self.batch = 0
+
+    def on_batch_end(self, batch, logs={}):
+        if self.batch % self.number_of_batches_between_saves == 0:
+            self.model.save_weights(self.model_name, overwrite=True)
+        self.batch += 1
+
+
+class Validator(Callback):
+    def __init__(self, number_of_batches_between_eval, logging_file):
+        self.number_of_batches_between_eval = number_of_batches_between_eval
+        self.logging_file = logging_file
+        self.batch = 0
+
+    def on_batch_end(self, batch, logs={}):
+        if self.batch % self.number_of_batches_between_eval == 0:
+            result = self.model.evaluate_generator(
+                reader.ptb_iterator(valid_data, args.batch_size, args.num_steps, vocab_size, with_jumps=True),
+                steps=len(valid_data) // args.batch_size // 3,
+                max_queue_size=10, workers=1)
+
+            num_chars_to_generate = 300
+            # Generate sentences every 10 epochs
+            # b = random.randint(0, n - 1)
+            seed = "וּמֵת אַחַד מֵהֶם וּבֵן אֵין לוֹ לֹא תִהְיֶה אֵשֶׁת הַמֵּת הַחוּצָה לְאִישׁ זָר יְבָמָהּ יָבֹא עָלֶיהָ וּלְקָחָהּ"
+            assert len(seed) < num_chars_to_generate
+
+            seed = list(seed)
+            seed = [word_to_id[char] for char in seed]
+            seed = np.asarray(seed, dtype=np.float32)
+
+            gen = generate_seq2(self.model, seed, vocab_size, num_chars_to_generate)
+
+            formatted_generated_text = '*** [', decode(seed, id_to_word), '] ', decode(gen[len(seed):], id_to_word)
+            print(formatted_generated_text)
+            print()
+
+            with open(self.logging_file, mode='a') as train_log_file:
+                fieldnames = ['batch', 'val_BPC', 'val_loss', 'train_BPC', 'train_loss', 'training_time (seconds)',
+                              'generated_text']
+                writer = csv.DictWriter(train_log_file, fieldnames=fieldnames)
+
+                if batch == 0:
+                    writer.writeheader()
+                writer.writerow({'batch': self.batch,
+                                 'val_BPC': result[1],
+                                 'val_loss': result[0],
+                                 'train_BPC': logs['BPC'],
+                                 'train_loss': logs['loss'],
+                                 'training_time (seconds)': time.time() - starting_time,
+                                 'generated_text': formatted_generated_text})
+                print(f'Batch #{self.batch}')
+                print(f'loss: {logs["loss"]} ----- BPC: {logs["BPC"]} ----- val_loss: {result[0]} ----- val_BPC {result[1]}')
+        self.batch += 1
+
 
 def generate_seq(seed, num_step, size, model, idx_to_chars, chars_to_idx,vocab_size, temperature=1.0):
 
@@ -358,8 +420,10 @@ def generate_seq2(
 
     return [int(t) for t in tokens]
 
+
 def decode(seq, idx_to_char):
         return ''.join(idx_to_char[id] for id in seq)
+
 
 def generate(epoch, logs):
 
@@ -379,7 +443,7 @@ def generate(epoch, logs):
     print(formatted_generated_text)
     print()
 
-    with open('train_log_file.csv', mode='a') as train_log_file:
+    with open(log_file, mode='a') as train_log_file:
         fieldnames = ['epoch', 'val_BPC', 'val_loss', 'train_BPC', 'train_loss', 'training_time (seconds)', 'generated_text']
         writer = csv.DictWriter(train_log_file, fieldnames=fieldnames)
 
@@ -392,7 +456,10 @@ def generate(epoch, logs):
                          'training_time (seconds)': time.time() - starting_time,
                          'generated_text': formatted_generated_text})
 
+
 if __name__ == "__main__":
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    log_file = f'{timestr}_train_log_file.csv'
 
     raw_data = reader.ptb_raw_data(data_path=args.data_path)
     train_data, valid_data, test_data, word_to_id, id_to_word = raw_data
@@ -418,7 +485,7 @@ if __name__ == "__main__":
         starting_time = time.time()
 
         model = get_keras_model(embedding_dim=args.embed_size, num_steps=args.num_steps,
-                                vocab_size=vocab_size, num_layers=args.num_layers,
+                                vocab_size=vocab_size, num_layers=args.fast_layers,
                                 dropout=args.keep_prob)
 
         # optimizer = optimizers.Adam(lr=args.lr_start, decay=args.lr_decay_rate)
@@ -430,17 +497,20 @@ if __name__ == "__main__":
         generate_stuff = keras.callbacks.LambdaCallback(
             on_epoch_end=lambda epoch, logs: generate(epoch, logs))
 
+
+
+
         print("########## Training ##########################")
 
         # Train the model
         model.fit_generator(reader.ptb_iterator(train_data, args.batch_size, args.num_steps, vocab_size),
                             # steps_per_epoch=1,
-                            steps_per_epoch=len(train_data)//(args.batch_size*args.num_steps),
+                            steps_per_epoch=len(train_data),
                             epochs=args.max_epoch,
                             verbose=1,
                             validation_data=reader.ptb_iterator(valid_data, args.batch_size, args.num_steps, vocab_size),
-                            validation_steps=len(valid_data)//(args.batch_size*args.num_steps),
-                            callbacks=[generate_stuff],
+                            validation_steps=len(valid_data)//args.batch_size,
+                            callbacks=[WeightsSaver(5000, f'bible_model.h5'), Validator(400, 'bible_logging_file.csv')],
                             )
 
         timestr = time.strftime("%Y%m%d-%H%M%S")
@@ -449,9 +519,28 @@ if __name__ == "__main__":
     else:
         # Load trained model
         # model_path = 'my_model.h5'
-        model_path = '10_epochs_100_numstep_dropout_model.h5'
-        model = load_model(model_path, custom_objects={'BPC': perplexity_wrapped})
+        model_path = 'ptb_model.h5'
+        model = get_keras_model(embedding_dim=args.embed_size, num_steps=args.num_steps,
+                                vocab_size=vocab_size, num_layers=args.fast_layers,
+                                dropout=args.keep_prob)
+        model.load_weights(model_path)
         model.summary()
+
+        num_chars_to_generate = 500
+        # Generate sentences every 10 epochs
+        # b = random.randint(0, n - 1)
+        seed = "they belong to a group of N ringers including two <unk> and four youngsters in training who drive every sunday from church to church in a <unk> effort to keep the bells <unk> in the many <unk> of east <unk> to ring for even one service at this tower we have to <unk> says mr. hammond a retired"
+        assert len(seed) < num_chars_to_generate
+
+        seed = list(seed)
+        seed = [word_to_id[char] for char in seed]
+        seed = np.asarray(seed, dtype=np.float32)
+
+        gen = generate_seq2(model, seed, vocab_size, num_chars_to_generate)
+
+        formatted_generated_text = '*** [', decode(seed, id_to_word), '] ', decode(gen[len(seed):], id_to_word)
+        print(formatted_generated_text)
+        print()
 
     # Test Trained model
     if is_testing:
