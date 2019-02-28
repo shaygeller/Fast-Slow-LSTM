@@ -117,7 +117,7 @@ class PTB_Model(nn.Module):
 
 
         for i in range(0, self.extra_fast_layers):
-            F_output_drop, F_state = self.F_extra[i](F_output_drop, F_state_new2)
+            F_output_drop, F_state = self.F_extra[i].cuda()(F_output_drop, F_state_new2)
             F_output_drop = self.dropout3(F_output_drop)
 
         # # Stack up LSTM outputs using view
@@ -301,7 +301,9 @@ if __name__ == "__main__":
     model = PTB_Model(embedding_dim=args.embed_size, num_steps=args.num_steps, batch_size=args.batch_size,
                       vocab_size=vocab_size, num_layers=args.num_layers, dp_keep_prob=args.keep_prob)
     model = model.cuda()
-
+    for p in model.parameters():
+        if p is not None:
+            p = p.cuda()
     # Creating criterion for loss computation
     weight = torch.ones(vocab_size)
     criterion = nn.CrossEntropyLoss(weight=weight, reduction="none").cuda()
